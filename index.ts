@@ -1,1 +1,1 @@
-export { hello } from './src/hello';
+export { JobPriorityQueue } from './src/job-priority-queue';

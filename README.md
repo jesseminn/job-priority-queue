@@ -1,34 +1,19 @@
-# TypeScript workbench
+## What is it?
 
-A starting point for TypeScript projects
+A data structure which do jobs one by one
 
-## Implementations
+## `JobPriorityQueue`
 
--   Minimal Webpack & Jest config
--   Opinionated TypeScript config
--   Support TypeScript `paths`
+### Use case
 
-## How to use
+A downside of event emitter pattern is all event listeners runs at the same time (actually _synchronously_). It would be hard for you to know the order of each event listener, you have to check every places you subscribe to the event listener to know that. Furthermore, event emitter don't care about async functions. It just trigger the event listener, then move to the next one. It become troublesome when you need to run a list of async functions one by one when an event emits.
 
-### As a starting point
+## `PriorityQueue`
 
-```sh
-mkdir my-project
-cd my-project
-# clone content into current directory
-git clone https://github.com/jesseminn/ts-workbench.git .
-# optional, remove history
-rm -rf .git
-git remote add origin <github-repo-url>
-```
+-   It's a `MinPriorityQueue` (smaller number, higher priority) because I think the priorities will easier to manage.
+-   All the magic happens in the `enqueue` method. When enqueuing an item, the position to insert the item into the array is ready decided.
 
-### Integrate existing project
+## TODO
 
-```sh
-git remote add ts-workbench https://github.com/jesseminn/ts-workbench.git
-git fetch ts-workbench
-git merge ts-workbench/master --squash --allow-unrelated-histories
-# After solving conflicts
-git commit -m"Integrated ts-workbench"
-npm i
-```
+-   Maybe I can use a `Map` instead of an array as the `queue`?
+-   Try using `Promise.race` to abort an async function

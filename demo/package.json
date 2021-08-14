@@ -11,7 +11,7 @@
     "author": "jesseminn@gmail.com",
     "license": "ISC",
     "dependencies": {
-        "hello-npm-package": "file:../"
+        "job-priority-queue": "file:../"
     },
     "devDependencies": {
         "@types/clean-webpack-plugin": "^0.1.3",
